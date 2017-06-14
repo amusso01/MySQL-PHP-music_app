@@ -10,8 +10,6 @@ require_once 'includes/dbConnect.php';
 $content='';
 $navigation='';
 
-// Include the head
-include('includes/head.php');
 
 //find artist and song in database
 $dbNumber=selectQuery('artist', $mysqli);
@@ -25,6 +23,8 @@ $mysqli->setSong($dbNumber);
 //language
 require_once 'lang/'.$config['lang'].'.php';
 
+// Include the head
+include('includes/head.php');
 //check which view to display
 include url($view);
 

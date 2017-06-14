@@ -6,11 +6,11 @@ function url($id){
         case 'home':
             return 'views/home.php';
             break;
-        case 'authors':
-            return 'views/authors.php';
+        case 'artists':
+            return 'views/artists.php';
             break;
-        case 'books':
-            return 'views/books.php';
+        case 'songs':
+            return 'views/songs.php';
             break;
         default:
             return 'views/404.php';
