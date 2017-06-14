@@ -39,12 +39,102 @@ function dirFile($dirPath){
         echo '<p>{{lang[dir_error]}}</p>';
     }
 }
+//Make a navigation bar out of an array
+//@parameter array of name for the navigation bar
+//@return the escaped list in html tag of the given array
 function makeNav($navArray){
     $navigation='';
     foreach ($navArray as $index => $item) {
-        $navigation.='<li><a href="'.$index.'">'.$item.'</a></li>'.PHP_EOL;
+        $navigation.='<li><a href="'.$index.'">'.htmlentities($item).'</a></li>'.PHP_EOL;
     }
     return $navigation;
+}
+//Function to execute SELECT query
+//@parameter name of the table to select
+//@parameter name of the attribute to select default *
+//@parameter connection object
+//@return the number of row in mysqli::result object for the query
+function selectQuery($table,$myDb,$attribute='*'){
+    $sql='SELECT '.$attribute.' FROM '.$table;
+    $row=0;
+    $myDb->real_escape_string($sql);
+    if($result=$myDb->query($sql)){
+        $row=$result->num_rows;
+    }else{
+        return $myDb->error;
+    }
+    $result->free();
+    return $row;
+}
+//return date according to the language
+function makeDate($config){
+    $today=getdate();
+    if ($config['lang']=='it'){
+        switch ($today['weekday']){
+            case 'Monday':
+                $today['weekday']='Lunedi';
+                break;
+            case 'Tuesday':
+                $today['weekday']='Martedi';
+                break;
+            case 'Wednesday':
+                $today['weekday']='Mercoledi';
+                break;
+            case 'Thursday':
+                $today['weekday']='Giovedi';
+                break;
+            case 'Friday':
+                $today['weekday']='Venerdi';
+                break;
+            case 'Saturday':
+                $today['weekday']='Sabato';
+                break;
+            case 'Sunday':
+                $today['weekday']='Domenica';
+                break;
+        }
+        switch ($today['month']){
+            case 'January':
+                $today['month']='Gennaio';
+                break;
+            case 'February':
+                $today['month']='Febbraio';
+                break;
+            case 'March':
+                $today['month']='Marzo';
+                break;
+            case 'April':
+                $today['month']='Aprile';
+                break;
+            case 'May':
+                $today['month']='Maggio';
+                break;
+            case 'June':
+                $today['month']='Giugno';
+                break;
+            case 'July':
+                $today['month']='Luglio';
+                break;
+            case 'August':
+                $today['month']='Agosto';
+                break;
+            case 'September':
+                $today['month']='Settembre';
+                break;
+            case 'October':
+                $today['month']='Ottobre';
+                break;
+            case 'November':
+                $today['month']='Novembre';
+                break;
+            case 'December':
+                $today['month']='Dicembre';
+                break;
+        }
+
+    }
+        return $today['weekday'].' '.$today['mday'].' '.$today['month'].' '.$today['year'];
+
 }
 
 

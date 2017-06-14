@@ -11,9 +11,19 @@ class myDb extends mysqli
         //call parent constructor
         parent:: __construct($host, $username, $passwd, $dbname);
     }
-
-//    public function songInDatabase($sql){
-//
-//    }
+    //setter
+    public function setSong($songNumber){
+        $this->songNumber=$songNumber;
+    }
+    public function setArtist($artistNumber){
+        $this->artistNumber=$artistNumber;
+    }
+    //getter
+    public function getSong(){
+        return $this->songNumber;
+    }
+    public function getArtist(){
+        return $this->artistNumber;
+    }
 }
 ?>
