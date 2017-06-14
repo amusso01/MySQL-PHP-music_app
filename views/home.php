@@ -9,5 +9,5 @@ $tmpl=file_get_contents($file);
 $navArray=dirFile($FILE_ROOT.'views');
 $navigation.=makeNav($navArray);
 $tmpl=str_replace('{{navigation}}',$navigation,$tmpl);
-$tmpl=str_replace('{{lang[number]}}',)
+$tmpl=str_replace('{{lang[number]}}',$lang['number'],$tmpl);
 echo $tmpl;
