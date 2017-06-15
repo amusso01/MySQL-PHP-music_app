@@ -3,7 +3,7 @@
 $FILE_ROOT = 'C:/wamp64/www/phpWebApp/TMA2/';
 
 // Set the media URL (where the media files will be...css, images, js etc)
-$MEDIA_URL = $FILE_ROOT.'media/';
+$MEDIA_URL = 'media/';
 
 // Set the template directory URL (useful if directory structure changes)
 $TEMPLATE_URL = $FILE_ROOT.'templates/';
