@@ -18,3 +18,13 @@ $config['db_host'] = 'localhost';
 $config['db_name'] = 'bbkdb';
 
 
+//SQL query
+$artist_songNumber="SELECT artist.name AS Artist,COUNT(song.title) AS Songs
+FROM artist
+RIGHT JOIN song ON artist.id=song.artist_id
+GROUP BY artist.name
+ORDER BY artist.name ASC";
+$song_artist_duration="SELECT  artist.name AS Artist,song.title AS Title, TIME_FORMAT(SEC_TO_TIME(song.duration),'%i:%s') AS Duration
+FROM artist
+INNER JOIN song ON artist.id = song.artist_id
+ORDER BY artist.name, song.title ASC";

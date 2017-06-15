@@ -66,7 +66,29 @@ function selectQuery($table,$myDb,$attribute='*'){
     $result->free();
     return $row;
 }
+//@parameter SQL query
+//@parameter database object connection
+//@return $html string table of the result
+function sqlResult($sql, $myDb){
+    $html='';
+//    $cleanSql=$myDb->real_escape_string($sql);
+    if ($result=$myDb->query($sql)){
+        $row = $result->fetch_fields();
+        $html.='<thead>'.PHP_EOL.'<th>'.htmlentities($row[0]->name).'</th>'.PHP_EOL.'<th>'.htmlentities($row[1]->name).'</th>'.PHP_EOL.'</thead>'.PHP_EOL;
+        while ($row=$result->fetch_row()){
+            $html.='<tr>'.PHP_EOL.'<td>'.htmlentities($row[0]).'</td>'.PHP_EOL.'<td>'.htmlentities($row[1]).'</td>'.PHP_EOL.'</tr>'.PHP_EOL;
+        }
+    }else{
+        return $myDb->error;
+    }
+    $result->free();
+    return $html;
+}
+
+
 //return date according to the language
+//@param $config
+//@return string
 function makeDate($config){
     $today=getdate();
     if ($config['lang']=='it'){
