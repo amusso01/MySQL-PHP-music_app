@@ -9,10 +9,6 @@ $tmplMain=file_get_contents($file);
 $navArray=dirFile($FILE_ROOT.'views');
 $navigation.=makeNav($navArray);
 
-
-
-
-
 //replace template
 $tmplHead=str_replace('{{lang[title]}}',$lang['title_home'],$tmplHead);
 $tmplHead=str_replace('{{navigation}}',$navigation,$tmplHead);
@@ -23,7 +19,6 @@ $tmplHead=str_replace('{{date}}',$lang['date'],$tmplHead);
 $tmplMain=str_replace('{{lang[welcome]}}',$lang['welcome_home'],$tmplMain);
 $tmplMain=str_replace('{{lang[mainContent]}}',$lang['main_content'],$tmplMain);
 
-
-
+//echo html
 echo $tmplHead;
 echo $tmplMain;

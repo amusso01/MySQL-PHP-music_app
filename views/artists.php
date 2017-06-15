@@ -12,7 +12,6 @@ $navigation.=makeNav($navArray);
 //create main content for artist view
 $content.=sqlResult($artist_songNumber,$mysqli);
 
-
 //replace template
 $tmplHead=str_replace('{{lang[title]}}',$lang['title_artist'],$tmplHead);
 $tmplHead=str_replace('{{navigation}}',$navigation,$tmplHead);
@@ -23,6 +22,6 @@ $tmplHead=str_replace('{{date}}',$lang['date'],$tmplHead);
 $tmplMain=str_replace('{{lang[welcome]}}',$lang['welcome_artist'],$tmplMain);
 $tmplMain=str_replace('{{lang[mainContent]}}',$content,$tmplMain);
 
-
+//echo html
 echo $tmplHead;
 echo $tmplMain;

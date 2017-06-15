@@ -74,9 +74,18 @@ function sqlResult($sql, $myDb){
 //    $cleanSql=$myDb->real_escape_string($sql);
     if ($result=$myDb->query($sql)){
         $row = $result->fetch_fields();
-        $html.='<thead>'.PHP_EOL.'<th>'.htmlentities($row[0]->name).'</th>'.PHP_EOL.'<th>'.htmlentities($row[1]->name).'</th>'.PHP_EOL.'</thead>'.PHP_EOL;
-        while ($row=$result->fetch_row()){
-            $html.='<tr>'.PHP_EOL.'<td>'.htmlentities($row[0]).'</td>'.PHP_EOL.'<td>'.htmlentities($row[1]).'</td>'.PHP_EOL.'</tr>'.PHP_EOL;
+        $html.= '<thead>'.PHP_EOL;
+        foreach ($row as $key => $value){
+            $html.='<th>'.htmlentities($row[$key]->name).'</th>'.PHP_EOL;
+        }
+        $html.='</thead>'.PHP_EOL;
+
+        while($row=$result->fetch_row()){
+         $html.='<tr>'.PHP_EOL;
+         foreach ($row as $key => $value){
+             $html.='<td>'.htmlentities($value).'</td>'.PHP_EOL;
+         }
+         $html.='</tr>'.PHP_EOL;
         }
     }else{
         return $myDb->error;
