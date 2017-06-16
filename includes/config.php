@@ -1,6 +1,6 @@
 <?php
 // Set a document root URL. May be useful depending how URLs are served.
-$FILE_ROOT = 'C:/wamp64/www/phpWebApp/TMA2/';
+$FILE_ROOT = '';
 
 // Set the media URL (where the media files will be...css, images, js etc)
 $MEDIA_URL = 'media/';
@@ -12,10 +12,10 @@ $TEMPLATE_URL = $FILE_ROOT.'templates/';
 date_default_timezone_set('Europe/London');
 $config['lang']='en';
 // database settings
-$config['db_user'] = 'amusso01';
-$config['db_pass'] = 'bbkmysql';
-$config['db_host'] = 'localhost';
-$config['db_name'] = 'bbkdb';
+$config['db_user'] = '';
+$config['db_pass'] = '';
+$config['db_host'] = '';
+$config['db_name'] = '';
 
 
 //SQL query
