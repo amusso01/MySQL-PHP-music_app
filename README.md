@@ -1,3 +1,0 @@
-#BBK TMA exam Web Application with MySQL and PHP
-
-WEB INTERFACE MUSIC DATABASE
