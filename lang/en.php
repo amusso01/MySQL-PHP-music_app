@@ -10,3 +10,5 @@ $lang['title_home']='Building Web Applications with MySQL and PHP - BBK - amusso
 $lang['title_artist']='Artists';
 $lang['title_song']='Songs';
 $lang['title_404']='404';
+$lang['song']='Songs in the Database';
+$lang['artist']='Artist in the Database';

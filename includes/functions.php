@@ -42,10 +42,14 @@ function dirFile($dirPath){
 //Make a navigation bar out of an array
 //@parameter array of name for the navigation bar
 //@return the escaped list in html tag of the given array
-function makeNav($navArray){
+function makeNav($navArray, $view){
     $navigation='';
     foreach ($navArray as $index => $item) {
+        if ($view==$item){
+            $navigation.='<li class="active" ><a href="'.$index.'">'.htmlentities($item).'</a></li>'.PHP_EOL;
+        }else{
         $navigation.='<li><a href="'.$index.'">'.htmlentities($item).'</a></li>'.PHP_EOL;
+        }
     }
     return $navigation;
 }
@@ -74,7 +78,7 @@ function sqlResult($sql, $myDb){
 //    $cleanSql=$myDb->real_escape_string($sql);
     if ($result=$myDb->query($sql)){
         $row = $result->fetch_fields();
-        $html.= '<thead>'.PHP_EOL;
+        $html.= '<table>'.PHP_EOL.'<thead>'.PHP_EOL;
         foreach ($row as $key => $value){
             $html.='<th>'.htmlentities($row[$key]->name).'</th>'.PHP_EOL;
         }
@@ -87,6 +91,7 @@ function sqlResult($sql, $myDb){
          }
          $html.='</tr>'.PHP_EOL;
         }
+        $html.='</table>'.PHP_EOL;
     }else{
         return $myDb->error;
     }
@@ -165,7 +170,6 @@ function makeDate($config){
 
     }
         return $today['weekday'].' '.$today['mday'].' '.$today['month'].' '.$today['year'];
-
 }
 
 

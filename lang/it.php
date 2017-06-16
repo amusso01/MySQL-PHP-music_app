@@ -10,4 +10,5 @@ $lang['title_home']='Costruire Applicazioni Web con MySQL e PHP - BBK - amusso01
 $lang['title_artist']='Artisti';
 $lang['title_song']='Canzoni';
 $lang['title_404']='404';
-//$lang[]=
+$lang['song']='Canzoni presenti nel Database';
+$lang['artist']='Artisti presenti nel Database';

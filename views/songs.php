@@ -7,11 +7,13 @@ $tmplMain=file_get_contents($file);
 
 //create navigation bar
 $navArray=dirFile($FILE_ROOT.'views');
-$navigation.=makeNav($navArray);
+$navigation.=makeNav($navArray,$view);
 //create main content for song view
 $content.=sqlResult($song_artist_duration,$mysqli);
 
 //replace template
+$tmplHead=str_replace('{{lang[song]}}',$lang['song'],$tmplHead);
+$tmplHead=str_replace('{{lang[artist]}}',$lang['artist'],$tmplHead);
 $tmplHead=str_replace('{{lang[title]}}',$lang['title_song'],$tmplHead);
 $tmplHead=str_replace('{{navigation}}',$navigation,$tmplHead);
 $tmplHead=str_replace('{{lang[number]}}',$lang['number'],$tmplHead);
